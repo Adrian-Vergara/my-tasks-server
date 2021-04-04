@@ -1,0 +1,563 @@
+{
+	"info": {
+		"_postman_id": "0fc466be-1807-4970-96c1-9829ecc68c24",
+		"name": "MyTask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"adrianvergara22@gmail.com\",\n    \"password\": \"qaz123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/authenticate",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Registro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{admin_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Adrian\",\n    \"last_name\": \"Operador\",\n    \"role_id\": 2,\n    \"email\": \"adrianvergara22@outlook.es\",\n    \"password\": \"qaz123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						},
+						"description": "Campos requeridos:\nname, role_id, email y password\n\nCampos opcionales:\nlast_name, phone, y address"
+					},
+					"response": []
+				},
+				{
+					"name": "Habilitar/Inhabilitar Usuarios",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{admin_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Adrian\",\n    \"last_name\": \"Operador 2\",\n    \"role_id\": 2,\n    \"email\": \"avergara@mmi-e.com\",\n    \"password\": \"qaz123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/users/3/enable-disable",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"3",
+								"enable-disable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar contraseña",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{admin_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"old_password\": \"qaz123\",\n    \"new_password\": \"qaz123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/users/change-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta general de usuarios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{admin_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/v1/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Registrar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{operator_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Proyecto #1\",\n    \"description\": \"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet assumenda consequatur debitis dolorem facilis fugiat, illum in ipsum iusto laborum modi mollitia pariatur perferendis, repudiandae sint temporibus ullam unde!\",\n    \"start_date\": \"2021-04-03\",\n    \"end_date\": \"2021-04-04\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/projects",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{operator_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Proyecto #1\",\n    \"description\": \"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet assumenda consequatur debitis dolorem facilis fugiat, illum in ipsum iusto laborum modi mollitia pariatur perferendis, repudiandae sint temporibus ullam unde!\",\n    \"end_date\": \"2021-04-06\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/projects/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta de Proyectos por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{operator_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/v1/projects/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta de todos los proyectos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{operator_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/v1/projects",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{operator_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/v1/projects/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Finalizar Proyecto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{operator_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/v1/projects/1/finish",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"1",
+								"finish"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Registrar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{operator_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tarea #1\",\n    \"description\": \"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet assumenda consequatur debitis dolorem facilis fugiat, illum in ipsum iusto laborum modi mollitia pariatur perferendis, repudiandae sint temporibus ullam unde!\",\n    \"execution_date\": \"2021-04-03\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/projects/1/tasks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"1",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{operator_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tarea #1 Actualizada\",\n    \"description\": \"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet assumenda consequatur debitis dolorem facilis fugiat, illum in ipsum iusto laborum modi mollitia pariatur perferendis, repudiandae sint temporibus ullam unde!\",\n    \"execution_date\": \"2021-04-03\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/tasks/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"tasks",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta de Tateas por id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{operator_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tarea #1\",\n    \"description\": \"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet assumenda consequatur debitis dolorem facilis fugiat, illum in ipsum iusto laborum modi mollitia pariatur perferendis, repudiandae sint temporibus ullam unde!\",\n    \"execution_date\": \"2021-04-03\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/tasks/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"tasks",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta de Tateas por Proyecto",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{operator_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tarea #1\",\n    \"description\": \"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet assumenda consequatur debitis dolorem facilis fugiat, illum in ipsum iusto laborum modi mollitia pariatur perferendis, repudiandae sint temporibus ullam unde!\",\n    \"execution_date\": \"2021-04-03\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/projects/1/tasks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"1",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Finalizar Tarea",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{operator_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tarea #1\",\n    \"description\": \"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet assumenda consequatur debitis dolorem facilis fugiat, illum in ipsum iusto laborum modi mollitia pariatur perferendis, repudiandae sint temporibus ullam unde!\",\n    \"execution_date\": \"2021-04-03\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/tasks/1/finish",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"tasks",
+								"1",
+								"finish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{operator_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tarea #1\",\n    \"description\": \"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet assumenda consequatur debitis dolorem facilis fugiat, illum in ipsum iusto laborum modi mollitia pariatur perferendis, repudiandae sint temporibus ullam unde!\",\n    \"execution_date\": \"2021-04-03\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/tasks/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"tasks",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
