@@ -1,0 +1,33 @@
+<?php
+
+namespace {{namespace}};
+
+use App\Traits\ApiResponse;
+use Illuminate\Http\Response;
+use App\Entities\Message;
+use Illuminate\Container\Container as Application;
+use App\Services\Base\BaseService;
+DummyPathModel
+
+class DummyService
+{
+	use ApiResponse;
+
+	public function __construct(Application $app)
+    {
+        parent::__construct($app);
+    }
+
+    protected $fieldSearchable = [];
+
+    public function getFieldsSearchable()
+    {
+        return $this->fieldSearchable;
+    }
+
+    public function model()
+    {
+        DummyModel
+    }
+
+}
