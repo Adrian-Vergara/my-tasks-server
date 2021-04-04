@@ -51,7 +51,7 @@ class TaskService extends BaseService implements TaskInterface
         $tasks = Task::with('user', 'statuses.user')
             ->where('project_id', $project_id)
             ->get();
-        if (empty($tasks)) {
+        if (count($tasks) == 0) {
             return $this->errorResponse('No hay tareas vinculadas al proyecto seleccionado', Response::HTTP_NOT_FOUND);
         }
         return $this->successResponse('', $tasks);
